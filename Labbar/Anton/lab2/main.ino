@@ -1,6 +1,6 @@
 /*
-    int led1 = 13;
-    int led2 = 12;
+    const int led1 = 13;
+    const int led2 = 12;
 
     void setup(){
         pinMode(led1, OUTPUT);
