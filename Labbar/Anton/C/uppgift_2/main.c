@@ -48,3 +48,13 @@ int main() {
   return 0;
 }
 
+
+/*
+Expected output
+
+Number   | Description | Value
+-------- | ----------- | -------
+123      | First       |   4567
+456      | Second      | 789
+7890     | Third       |  12345
+*/
