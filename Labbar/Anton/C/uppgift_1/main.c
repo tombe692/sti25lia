@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <assert.h>
+#include <ctype.h>
 
 typedef struct Question{
     int num1;
@@ -36,7 +37,13 @@ int answer_question(Q_ptr q){
 int main(void){
     srand(time(0));
     printf("Hello\n");
-    Q_ptr q = create_question();
-    answer_question(q);
+    char ipt;
+    while(1){
+        Q_ptr q = create_question();
+        answer_question(q);
+        printf("DO you want to stop playing? (y/n)\n");
+        scanf("%c", &ipt);
+        if(tolower(ipt) == 'y'){ break; }
+    }
     return 0;
 }
