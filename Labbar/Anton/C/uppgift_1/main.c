@@ -24,13 +24,12 @@ int answer_question(Q_ptr q){
     while(1){
         printf("What is the sum of %d + %d?\nYour answer: ", q->num1, q->num2);
         scanf("%d", &answer);
-        printf("Answer saved: %d\n", answer);
         if(answer == sum){
-            printf("You got it right\n\n%d + %d = %d\n", q->num1, q->num2, sum);
+            printf("You got it right\n%d + %d = %d\n\n", q->num1, q->num2, sum);
             break;
         }
         else{
-            printf("Wrong answer, try again\n");
+            printf("Wrong answer, try again\n\n");
         }
     }
     free(q);
@@ -44,9 +43,15 @@ int main(void){
     while(1){
         Q_ptr q = create_question();
         answer_question(q);
-        printf("DO you want to stop playing? (y/n)\n");
-        scanf("%c", &ipt);
-        if(tolower(ipt) == 'y'){ break; }
+        printf("Do you want to stop playing? (y/n)\n");
+        while(1){
+            scanf(" %c", &ipt);
+            // printf("dbg: %s\n", ipt);
+            if(tolower(ipt) == 'y'){ return 0; }
+            else if(tolower(ipt) == 'n'){ break; }
+            else{ printf("Write y or n\n"); }
+        }
+        printf("\n");
     }
     return 0;
 }
