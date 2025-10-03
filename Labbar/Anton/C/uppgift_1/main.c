@@ -21,14 +21,17 @@ Q_ptr create_question(void){
 
 int answer_question(Q_ptr q){
     int sum = q->num1 + q->num2, answer = 0;
-    printf("What is the sum of %d + %d?\nYour answer: ", q->num1, q->num2);
-    scanf("%d", &answer);
-    printf("Answer saved: %d\n", answer);
-    if(answer == sum){
-        printf("You got it right\n\n%d + %d = %d\n", q->num1, q->num2, sum);
-    }
-    else{
-        printf("Wrong answer, it was %d\n", sum);
+    while(1){
+        printf("What is the sum of %d + %d?\nYour answer: ", q->num1, q->num2);
+        scanf("%d", &answer);
+        printf("Answer saved: %d\n", answer);
+        if(answer == sum){
+            printf("You got it right\n\n%d + %d = %d\n", q->num1, q->num2, sum);
+            break;
+        }
+        else{
+            printf("Wrong answer, try again\n");
+        }
     }
     free(q);
     return 1;
