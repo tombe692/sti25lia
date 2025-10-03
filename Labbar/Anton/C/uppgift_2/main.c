@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 #define MAX_BOX_SIZE 6
 #define PADDING 2
@@ -13,6 +14,7 @@ int main(void){
     int ipt;
     printf("how many lines is the table?\nWrite here: ");
     scanf("%d", &ipt);
+	assert(ipt > 0 && "ERR: bad input (Input below 0)");
     print_tabel(&ipt);
     return 0;
 }
