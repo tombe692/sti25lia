@@ -15,8 +15,8 @@ Q_ptr create_question(void){
     Q_ptr q = (Q_ptr)malloc(sizeof(Question));
     assert(q != NULL);
     while(1){
-        q->num1 = (rand() % 99) + 1; 
-        q->num2 = (rand() % 99) + 1;
+        q->num1 = rand() % 100; 
+        q->num2 = rand() % 100;
         if(q->num1 - q->num2 >= 0){ break; }
     }
         
@@ -44,13 +44,18 @@ int answer_question(Q_ptr q){
 int main(void){
     srand(time(0));
     printf("Hello\n");
-    char ipt = ' ';
+    char ipt;
     while(1){
         Q_ptr q = create_question();
         answer_question(q);
-        printf("DO you want to stop playing? (y/n)\n");
-        scanf("%c", &ipt);
-        if(tolower(ipt) == 'y'){ break; }
+        printf("Do you want to stop playing? (y/n)\n");
+        while(1){
+            scanf(" %c", &ipt);
+            if(tolower(ipt) == 'y'){ return 0; }
+            else if(tolower(ipt) == 'n'){ break; }
+            else{ printf("Write y or n\n"); }
+        }
+        printf("\n");
     }
     return 0;
 }
