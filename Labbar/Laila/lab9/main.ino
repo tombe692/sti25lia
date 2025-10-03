@@ -44,4 +44,4 @@ void loop() {
 
   delay(200); // liten paus för stabil serial output
 }
-*/
+*/ 
