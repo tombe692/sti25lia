@@ -1,60 +1,59 @@
-// #include <stdio.h>
-
-// #define MAX_BOX_SIZE 4
-
-// void print_heder(int *ipt){
-//     int i=1;
-//     printf(" X |");
-//     for(; i<=*ipt; i++){
-//         printf("%*d", MAX_BOX_SIZE, i);
-//         // printf("%d\t", i);
-//     }
-//     printf("\n----");
-//     for(; i>1; i--){
-//         printf("%*c |", MAX_BOX_SIZE, '-');
-//         // printf("0");
-//     }
-//     printf("\n");
-// }
-
-// int main(void){
-//     int ipt;
-//     printf("how many lines is the table?\nWrite here: ");
-//     scanf("%d", &ipt);
-//     print_heder(&ipt);
-    
-    
-//     return 0;
-// }
-
 #include <stdio.h>
 #include <string.h>
 
-int main() {
-  int column_width = 12;
+#define MAX_BOX_SIZE 6
+#define PADDING 2
 
-  printf("%-*s | %-*s | %-*s\n", column_width, "Number", column_width,
-         "Description", column_width, "Value");
-  printf("%-*c | %-*c | %-*c\n", column_width, '-', column_width, '-',
-         column_width, '-');
+void print_line(int idx);
+void print_heder(int *ipt);
+void print_num_row(int row_num, int *ipt);
+void print_tabel(int *ipt);
 
-  printf("%-*d | %-*s | %*.*d\n", column_width, 123, column_width, "First",
-         column_width, 2, 4567);
-  printf("%-*d | %-*s | %*.*d\n", column_width, 456, column_width, "Second",
-         column_width, 4, 789);
-  printf("%-*d | %-*s | %*.*d\n", column_width, 7890, column_width, "Third",
-         column_width, 1, 12345);
-
-  return 0;
+int main(void){
+    int ipt;
+    printf("how many lines is the table?\nWrite here: ");
+    scanf("%d", &ipt);
+    print_tabel(&ipt);
+    return 0;
 }
 
+void print_line(int idx){
+	char dashes[MAX_BOX_SIZE + 1];
+    memset(dashes, '-', MAX_BOX_SIZE);
+    dashes[MAX_BOX_SIZE] = '\0';
 
-/*
-Expected output
+	printf("\n%-*s", MAX_BOX_SIZE, dashes);
+	for(; idx>0; idx--){
+		printf("%*s", MAX_BOX_SIZE, dashes);
+	}
+	printf("\n");
+}
 
-Number   | Description | Value
--------- | ----------- | -------
-123      | First       |   4567
-456      | Second      | 789
-7890     | Third       |  12345
-*/
+void print_heder(int *ipt){
+    int idx=0;
+    // Top row
+    printf("%*c%*c", MAX_BOX_SIZE-PADDING, 'X', PADDING, '|');
+    for(; idx<*ipt; idx++){
+       printf("%*d%*c", MAX_BOX_SIZE-PADDING, idx+1, PADDING, '|');
+    }
+	// Seperation line
+	print_line(idx);
+}
+
+void print_num_row(int row_num, int *ipt){
+	printf("%*d%*c", MAX_BOX_SIZE-PADDING, row_num, PADDING, '|');
+	for(int i=1; i<=*ipt; i++){
+		printf("%*d%*c", MAX_BOX_SIZE-PADDING, i*row_num, PADDING, '|');
+	}
+}
+
+void print_tabel(int *ipt){
+	print_heder(ipt);
+	for(int i=1; i<=*ipt; i++){
+		print_num_row(i, ipt);
+		if(i<*ipt){
+			printf("\n");
+		}
+	}
+	print_line(*ipt);
+}
