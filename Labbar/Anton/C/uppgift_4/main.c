@@ -25,7 +25,7 @@ int power(int b, int e){
 
 double taylor_estm(int x, int n){
     double sum=1.0;
-    for(int i=0; i<n-1; i++){
+    for(int i=0; i<n; i++){
         // printf("x*i = %d || fac(i) = %d || sum = %f\n", x*i, fac(i), sum); //debug
         sum += power(x,i+1) / (double)fac(i+1);
     }
@@ -34,7 +34,7 @@ double taylor_estm(int x, int n){
 
 void print_taylor(int x, int n){
     for(int i=0; i<n; i++){
-        printf("%-*d %*.7f\n", TERM_PADDING, i+1, VALUE_PADDING, taylor_estm(x, i+1));
+        printf("%-*d %*.7f\n", TERM_PADDING, i+1, VALUE_PADDING, taylor_estm(x, i));
     }
 }
 
