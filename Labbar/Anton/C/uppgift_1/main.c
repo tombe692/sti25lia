@@ -14,8 +14,8 @@ typedef Question *Q_ptr;
 Q_ptr create_question(void){
     Q_ptr q = (Q_ptr)malloc(sizeof(Question));
     assert(q != NULL);
-    q->num1 = (rand() % 99) + 1; 
-    q->num2 = (rand() % 99) + 1; 
+    q->num1 = rand() % 100; 
+    q->num2 = rand() % 100; 
     return q;
 }
 
