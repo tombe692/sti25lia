@@ -49,7 +49,11 @@ int main() {
 */ 
 
 
+
 /*
+//Det här är för project euler problem 1
+
+
 #include <iostream>
 using namespace std;
 
@@ -72,4 +76,5 @@ int main() {
 
     printf("Answer of Sum = %d", sum );
     return 0;
-}*/ 
+}
+*/
