@@ -1,3 +1,4 @@
+
 /*#include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
@@ -67,3 +68,64 @@ void loop() {
   }
 
 } */
+
+
+
+/*
+#define BLYNK_TEMPLATE_ID "TMPL4hk7ZLOfN"
+#define BLYNK_TEMPLATE_NAME "DHt22"
+#define BLYNK_TEMPLATE_TOKEN "Plpu4zON0a2qRu8AsC787i4LfPWTrKvb"
+
+#define BLYNK_PRINT Serial
+#include "WiFiS3.h"
+#include "BlynkSimpleWifi.h"
+#include "dht.h"
+
+#define DHT22_PIN 2
+#define DHT22_TYPE DHT22
+
+DHT dht(DHT22_PIN, DHT22_TYPE);
+
+// Wi-Fi och Blynk
+char auth[] = BLYNK_TEMPLATE_TOKEN;
+char ssid[] = "STI Student";
+char pass[] = "STI1924stu";
+
+// Tidsintervall mellan läsningar
+unsigned long previousMillis = 0;
+const long interval = 2000; // 2 sekunder
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+
+  // Starta Blynk
+  Blynk.begin(auth, ssid, pass);
+}
+
+void loop() {
+  Blynk.run();
+
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+    float temp = dht.readTemperature();
+    float hum = dht.readHumidity();
+
+    if (isnan(temp) || isnan(hum)) {
+      Serial.println("Error reading DHT22!");
+      return;
+    }
+
+    Serial.print("Temperature: ");
+    Serial.println(temp);
+    Serial.print("Humidity: ");
+    Serial.println(hum);
+
+    // Skicka värden till Blynk
+    Blynk.virtualWrite(V1, temp); // V1 för temperatur
+    Blynk.virtualWrite(V2, hum);  // V2 för luftfuktighet
+  }
+}
+*/
