@@ -1,4 +1,4 @@
-
+/*
 #include <WiFiS3.h>  // finns redan inbyggt i Uno R4 WiFi, ingen extra lib behövs
 #include <BlynkSimpleWiFi.h>
 
@@ -15,7 +15,7 @@ void loop() {
   digitalWrite(13, LOW);  // Släck LED
   delay(1000);            // Vänta 1 sekund
 }
-
+*/
 
 
 #define BLYNK_TEMPLATE_ID "TMPL4Fny2vhRT"
